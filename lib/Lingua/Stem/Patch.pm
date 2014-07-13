@@ -7,7 +7,7 @@ use Carp;
 use Moo;
 use namespace::clean;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 my @languages   = qw( eo io );
 my %is_language = map { $_ => 1 } @languages;
@@ -21,6 +21,13 @@ has language => (
     required => 1,
 );
 
+has aggressive => (
+    is      => 'rw',
+    coerce  => sub { !!$_[0] },
+    trigger => sub { $_[0]->_clear_stemmer },
+    default => 0,
+);
+
 has _stemmer => (
     is      => 'rw',
     builder => '_build_stemmer',
@@ -31,9 +38,14 @@ has _stemmer => (
 sub _build_stemmer {
     my $self = shift;
     my $language = uc $self->language;
+    my $function = 'stem';
+
+    if ($self->aggressive) {
+        $function .= '_aggressive';
+    }
 
     require "Lingua/Stem/Patch/$language.pm";
-    $self->_stemmer( \&{"Lingua::Stem::Patch::${language}::stem"} );
+    $self->_stemmer( \&{"Lingua::Stem::Patch::${language}::${function}"} );
 }
 
 sub languages {
@@ -59,7 +71,7 @@ Lingua::Stem::Patch - Patch stemmers
 
 =head1 VERSION
 
-This document describes Lingua::Stem::Patch v0.01.
+This document describes Lingua::Stem::Patch v0.02.
 
 =head1 SYNOPSIS
 
@@ -107,6 +119,13 @@ always returned in lowercase when requested.
 
     # change language
     $stemmer->language($language);
+
+=item aggressive
+
+By default a light stemmer will be used, but when C<aggressive> is set to true,
+an aggressive stemmer will be used instead.
+
+    $stemmer->aggressive(1);
 
 =back
 

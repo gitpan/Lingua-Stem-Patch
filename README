@@ -2,7 +2,7 @@ NAME
     Lingua::Stem::Patch - Patch stemmers
 
 VERSION
-    This document describes Lingua::Stem::Patch v0.01.
+    This document describes Lingua::Stem::Patch v0.02.
 
 SYNOPSIS
         use Lingua::Stem::Patch;
@@ -44,6 +44,12 @@ DESCRIPTION
 
             # change language
             $stemmer->language($language);
+
+    aggressive
+        By default a light stemmer will be used, but when "aggressive" is
+        set to true, an aggressive stemmer will be used instead.
+
+            $stemmer->aggressive(1);
 
   Methods
     stem

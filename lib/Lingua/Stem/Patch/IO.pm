@@ -6,10 +6,11 @@ use strict;
 use warnings;
 use parent 'Exporter';
 
-our $VERSION   = '0.01';
-our @EXPORT_OK = qw( stem stem_io );
+our $VERSION   = '0.02';
+our @EXPORT_OK = qw( stem stem_io stem_aggressive stem_io_aggressive );
 
-*stem_io = \&stem;
+*stem_io            = \&stem;
+*stem_io_aggressive = \&stem_aggressive;
 
 sub stem {
     my ($word) = @_;
@@ -27,6 +28,15 @@ sub stem {
     return $word;
 }
 
+sub stem_aggressive {
+    my $stem = stem(shift);
+
+    # remove final suffix
+    $stem =~ s{ (?: [aeo] | ar ) $}{}x;
+
+    return $stem;
+}
+
 1;
 
 __END__
@@ -39,7 +49,7 @@ Lingua::Stem::IO - Ido stemmer
 
 =head1 VERSION
 
-This document describes Lingua::Stem::Patch::IO v0.01.
+This document describes Lingua::Stem::Patch::IO v0.02.
 
 =head1 SYNOPSIS
 
@@ -52,12 +62,14 @@ This document describes Lingua::Stem::Patch::IO v0.01.
 
 =head1 DESCRIPTION
 
-A stemmer for the universal language Ido. This is a new project under active
-development and the current stemming algorithm is likely to change.
+Light and aggressive stemmers for the universal language Ido. This is a new
+project under active development and the current stemming algorithm is likely to
+change.
 
-This module provides the C<stem> and C<stem_io> functions, which are synonymous
-and can optionally be exported. They accept a single word and return a single
-stem.
+This module provides the C<stem> and C<stem_io> functions for the light stemmer,
+which are synonymous and can optionally be exported, plus C<stem_aggressive> and
+C<stem_io_aggressive> functions for the aggressive stemmer. They accept a
+character string for a word and return a character string for its stem.
 
 =head1 SEE ALSO
 
