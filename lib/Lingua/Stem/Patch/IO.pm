@@ -6,35 +6,59 @@ use strict;
 use warnings;
 use parent 'Exporter';
 
-our $VERSION   = '0.02';
+our $VERSION   = '0.03';
 our @EXPORT_OK = qw( stem stem_io stem_aggressive stem_io_aggressive );
 
 *stem_io            = \&stem;
 *stem_io_aggressive = \&stem_aggressive;
 
+my %protect = (
+    root => { map { $_ => 1 } qw(
+        la li me ni on vi
+    ) },
+);
+
 sub stem {
-    my ($word) = @_;
+    my $word = lc shift;
 
-    $word = lc $word;
+    for ($word) {
+        # standalone roots
+        last if $protect{root}{$word};
 
-    # -on -i -in
-    return $word
-        if $word =~ s{ (?: on | in? ) $}{o}x;
+        # nouns: -on -i -in → -o
+        last if s{ (?: on | in? ) $}{o}x;
 
-    # -ir -or -is -as -os -us -ez
-    return $word
-        if $word =~ s{ (?: [io]r | [aiou]s | ez ) $}{ar}x;
+        # remove -u from pronouns: elu ilu olu onu
+        last if s{ (?<= ^ [eio] l | on ) u $}{}x;
+
+        # pariciple adjectives: -inta -anta -onta -ita -ata -ota → -ar
+        last if s{ (?: [aio] n? t ) a $}{ar}x;
+
+        # verbs: -ir -or -is -as -os -us -ez → -ar
+        s{ (?: [io] r | [aiou] s | ez ) $}{ar}x;
+
+        # remove -ab- from verbs
+        s{ ab (?= ar $ ) }{}x;
+    }
 
     return $word;
 }
 
 sub stem_aggressive {
-    my $stem = stem(shift);
+    my $word = stem(shift);
 
-    # remove final suffix
-    $stem =~ s{ (?: [aeo] | ar ) $}{}x;
+    for ($word) {
+        # standalone roots
+        last if $protect{root}{$word};
 
-    return $stem;
+        # remove final suffix
+        s{ (?: [aeo] | ar ) $}{}x;
+
+        # remove -u from pronouns: elu ilu olu onu
+        last if s{ (?<= ^ [eio] l | on ) u $}{}x;
+    }
+
+    return $word;
 }
 
 1;
@@ -49,7 +73,7 @@ Lingua::Stem::IO - Ido stemmer
 
 =head1 VERSION
 
-This document describes Lingua::Stem::Patch::IO v0.02.
+This document describes Lingua::Stem::Patch::IO v0.03.
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 {
-   "abstract" : "Patch stemmers",
+   "abstract" : "Patch stemmers for Esperanto and Ido",
    "author" : [
       "Nick Patch <patch@cpan.org>"
    ],
@@ -49,15 +49,15 @@
    "provides" : {
       "Lingua::Stem::Patch" : {
          "file" : "lib/Lingua/Stem/Patch.pm",
-         "version" : "0.02"
+         "version" : "0.03"
       },
       "Lingua::Stem::Patch::EO" : {
          "file" : "lib/Lingua/Stem/Patch/EO.pm",
-         "version" : "0.02"
+         "version" : "0.03"
       },
       "Lingua::Stem::Patch::IO" : {
          "file" : "lib/Lingua/Stem/Patch/IO.pm",
-         "version" : "0.02"
+         "version" : "0.03"
       }
    },
    "release_status" : "stable",
@@ -73,5 +73,5 @@
          "url" : "git://github.com/patch/lingua-stem-patch-pm5.git"
       }
    },
-   "version" : "0.02"
+   "version" : "0.03"
 }
