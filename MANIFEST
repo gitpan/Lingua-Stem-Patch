@@ -3,6 +3,7 @@ Changes
 lib/Lingua/Stem/Patch.pm
 lib/Lingua/Stem/Patch/EO.pm
 lib/Lingua/Stem/Patch/IO.pm
+lib/Lingua/Stem/Patch/PL.pm
 LICENSE
 MANIFEST			This list of files
 META.json
@@ -16,3 +17,4 @@ t/eo-roots.t
 t/io.t
 t/io-aggressive.t
 t/io-roots.t
+t/pl.t

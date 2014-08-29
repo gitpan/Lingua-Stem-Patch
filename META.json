@@ -41,6 +41,7 @@
       "test" : {
          "requires" : {
             "English" : "0",
+            "String::Dump" : "0.05",
             "Test::More" : "0.82",
             "open" : "0"
          }
@@ -49,15 +50,19 @@
    "provides" : {
       "Lingua::Stem::Patch" : {
          "file" : "lib/Lingua/Stem/Patch.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       },
       "Lingua::Stem::Patch::EO" : {
          "file" : "lib/Lingua/Stem/Patch/EO.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       },
       "Lingua::Stem::Patch::IO" : {
          "file" : "lib/Lingua/Stem/Patch/IO.pm",
-         "version" : "0.03"
+         "version" : "0.04"
+      },
+      "Lingua::Stem::Patch::PL" : {
+         "file" : "lib/Lingua/Stem/Patch/PL.pm",
+         "version" : "0.04"
       }
    },
    "release_status" : "stable",
@@ -73,5 +78,5 @@
          "url" : "git://github.com/patch/lingua-stem-patch-pm5.git"
       }
    },
-   "version" : "0.03"
+   "version" : "0.04"
 }

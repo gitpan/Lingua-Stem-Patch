@@ -2,7 +2,7 @@ NAME
     Lingua::Stem::Patch - Patch stemmers for Esperanto and Ido
 
 VERSION
-    This document describes Lingua::Stem::Patch v0.03.
+    This document describes Lingua::Stem::Patch v0.04.
 
 SYNOPSIS
         use Lingua::Stem::Patch;
@@ -31,6 +31,7 @@ DESCRIPTION
             ┌───────────┬────┐
             │ Esperanto │ eo │
             │ Ido       │ io │
+            │ Polish    │ pl │
             └───────────┴────┘
 
         They are in the two-letter ISO 639-1 format and are case-insensitive

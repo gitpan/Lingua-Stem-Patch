@@ -7,9 +7,9 @@ use Carp;
 use Moo;
 use namespace::clean;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
-my @languages   = qw( eo io );
+my @languages   = qw( eo io pl );
 my %is_language = map { $_ => 1 } @languages;
 
 has language => (
@@ -71,7 +71,7 @@ Lingua::Stem::Patch - Patch stemmers for Esperanto and Ido
 
 =head1 VERSION
 
-This document describes Lingua::Stem::Patch v0.03.
+This document describes Lingua::Stem::Patch v0.04.
 
 =head1 SYNOPSIS
 
@@ -106,6 +106,7 @@ The following language codes are currently supported.
     ┌───────────┬────┐
     │ Esperanto │ eo │
     │ Ido       │ io │
+    │ Polish    │ pl │
     └───────────┴────┘
 
 They are in the two-letter ISO 639-1 format and are case-insensitive but are
