@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use parent 'Exporter';
 
-our $VERSION   = '0.04';
+our $VERSION   = '0.05';
 our @EXPORT_OK = qw( stem stem_pl );
 
 *stem_pl = \&stem;
@@ -153,10 +153,14 @@ sub remove_other {
     my $length = length $word;
 
     if ($length > 4) {
-        return $word if $word =~ s{ (?:
-            [aąęiłuy]
-            | i[ae]  # -ia -ie
-        ) $}{}x;
+        return $word if $word =~ s{
+            i[ae]  # -ia -ie
+        $}{}x;
+    }
+
+    if ($length > 3) {
+        return $word
+            if $word =~ s{ [aąęiłuy] $}{}x;
     }
 
     return $word;
@@ -174,7 +178,7 @@ Lingua::Stem::Patch::PL - Polish stemmer
 
 =head1 VERSION
 
-This document describes Lingua::Stem::Patch::PL v0.04.
+This document describes Lingua::Stem::Patch::PL v0.05.
 
 =head1 SYNOPSIS
 

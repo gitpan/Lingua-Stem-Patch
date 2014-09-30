@@ -2,7 +2,7 @@ NAME
     Lingua::Stem::Patch - Patch stemmers for Esperanto and Ido
 
 VERSION
-    This document describes Lingua::Stem::Patch v0.04.
+    This document describes Lingua::Stem::Patch v0.05.
 
 SYNOPSIS
         use Lingua::Stem::Patch;
@@ -47,7 +47,7 @@ DESCRIPTION
             $stemmer->language($language);
 
     aggressive
-        By default a light stemmer will be used, but when "aggressive" is
+        By default a light stemmer will be used, but when `aggressive' is
         set to true, an aggressive stemmer will be used instead.
 
             $stemmer->aggressive(1);

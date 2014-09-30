@@ -4,7 +4,7 @@
       "Nick Patch <patch@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4205",
+   "generated_by" : "Module::Build version 0.421",
    "license" : [
       "perl_5"
    ],
@@ -50,19 +50,19 @@
    "provides" : {
       "Lingua::Stem::Patch" : {
          "file" : "lib/Lingua/Stem/Patch.pm",
-         "version" : "0.04"
+         "version" : "0.05"
       },
       "Lingua::Stem::Patch::EO" : {
          "file" : "lib/Lingua/Stem/Patch/EO.pm",
-         "version" : "0.04"
+         "version" : "0.05"
       },
       "Lingua::Stem::Patch::IO" : {
          "file" : "lib/Lingua/Stem/Patch/IO.pm",
-         "version" : "0.04"
+         "version" : "0.05"
       },
       "Lingua::Stem::Patch::PL" : {
          "file" : "lib/Lingua/Stem/Patch/PL.pm",
-         "version" : "0.04"
+         "version" : "0.05"
       }
    },
    "release_status" : "stable",
@@ -78,5 +78,5 @@
          "url" : "git://github.com/patch/lingua-stem-patch-pm5.git"
       }
    },
-   "version" : "0.04"
+   "version" : "0.05"
 }
